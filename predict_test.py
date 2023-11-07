@@ -3,7 +3,8 @@
 
 import requests
 
-url = 'http://localhost:9696/predict'
+#url = 'http://localhost:9696/predict'
+url = 'https://dropout-predict-2avfrxfgrq-uc.a.run.app/predict'
 
 from sample_studs import *
 

@@ -11,8 +11,6 @@ Main purpose is to predict the chance of student dropout
 Project is deployed to the GCP and you can test it here:
 [Students dropout prediction](https://dropout-predict-2avfrxfgrq-uc.a.run.app/)
 
-API using JSON can be reached with
-[Students dropout prediction API](https://dropout-predict-2avfrxfgrq-uc.a.run.app/predict)
 
 Project files to see:
 
@@ -25,4 +23,5 @@ model/model.bin - model and DictVectoriser stored by pickle
 
 predict.py - script for running flask server, with API JSON prediction, and prediction throug HTML interface
 predict_test.py - prediction test using API JSON
+(API using JSON can be reached with [prediction API](https://dropout-predict-2avfrxfgrq-uc.a.run.app/predict))
 
