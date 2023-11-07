@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>STUDENT DROPOUT Model Input Form</title>
+</head>
+<body>
+    <h1>DROPOUT PREDICTION</h1>
+    <br>Prediction based on the form data<br>
+    <h2><p id="prediction_result"></p></h2>
+    <br>
+    <h1>STUDENT DROPOUT Model Input Form</h1>
+    <form action="/predict_form" method="post" id="prediction_form">
+        <!-- Numerical Fields -->
+        <label for="application_order">Application Order (int):</label>
+        <input type="number" id="application_order" name="application_order" required><br><br>
+
+        <label for="age">Age (int):</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <!-- Add more numerical fields here -->
+
+        <!-- Categorical Fields -->
+        <label for="marital_status">Marital Status:</label>
+        <select id="marital_status" name="marital_status">
+            <option>Single</option>
+            <option>Married</option>
+            <option>Widower</option>
+            <option>Divorced</option>
+            <option>Facto union</option>
+            <option>Legally separated</option>
+            <!-- Add more options here for Marital Status -->
+        </select><br><br>
+
+        <!-- Categorical Field: Application Mode -->
+        <label for="application_mode">Application Mode:</label>
+        <select id="application_mode" name="application_mode">
+            <option>1st phase-general contingent</option>
+            <option>Ordinance No. 612/93</option>
+            <option>1st phase-special contingent (Azores Island)</option>
+            <option>Holders of other higher courses</option>
+            <option>Ordinance No. 854-B/99</option>
+            <option>International student (bachelor)</option>
+            <option>1st phase-special contingent (Madeira Island)</option>
+            <option>2nd phase-general contingent</option>
+            <option>3rd phase-general contingent</option>
+            <option>Ordinance No. 533-A/99, item b2) (Different Plan)</option>
+            <option>Ordinance No. 533-A/99, item b3 (Other Institution)</option>
+            <option>Over 23 years old</option>
+            <option>Transfer</option>
+            <option>Change in course</option>
+            <option>Technological specialization diploma holders</option>
+            <option>Change in institution/course</option>
+            <option>Short cycle diploma holders</option>
+            <option>Change in institution/course (International)</option>
+        </select><br><br>
+
+        <label for="course">Course:</label>
+        <select id="course" name="course">
+            <option>Biofuel Production Technologies</option>
+            <option>Animation and Multimedia Design</option>
+            <option>Social Service (evening attendance)</option>
+            <option>Agronomy</option>
+            <option>Communication Design</option>
+            <option>Veterinary Nursing</option>
+            <option>Informatics Engineering</option>
+            <option>Equiniculture</option>
+            <option>Management</option>
+            <option>Social Service</option>
+            <option>Tourism</option>
+            <option>Nursing</option>
+            <option>Oral Hygiene</option>
+            <option>Advertising and Marketing Management</option>
+            <option>Journalism and Communication</option>
+            <option>Basic Education</option>
+            <option>Management (evening attendance)</option>
+        </select><br><br>
+
+        <!-- Categorical Field: Previous Qualification -->
+        <label for="previous_qualification">Previous Qualification:</label>
+        <select id="previous_qualification" name="previous_qualification">
+            <option>Secondary education</option>
+            <option>Higher education-bachelor’s degree</option>
+            <option>Higher education-degree</option>
+            <option>Higher education-master’s degree</option>
+            <option>Higher education-doctorate</option>
+            <option>Frequency of higher education</option>
+            <option>12th year of schooling-not completed</option>
+            <option>11th year of schooling-not completed</option>
+            <option>Other-11th year of schooling</option>
+            <option>10th year of schooling</option>
+            <option>10th year of schooling-not completed</option>
+            <option>Basic education 3rd cycle (9th/10th/11th year) or equivalent</option>
+            <option>Basic education 2nd cycle (6th/7th/8th year) or equivalent</option>
+            <option>Technological specialization course</option>
+            <option>Higher education-degree (1st cycle)</option>
+            <option>Professional higher technical course</option>
+            <option>Higher education-master’s degree (2nd cycle)</option>
+        </select><br><br>
+
+        <!-- Categorical Field: Father Qualification -->
+        <label for="mother_qualification">Mother Qualification:</label>
+        <select id="mother_qualification" name="mother_qualification">
+            <option>Secondary Education-12th Year of Schooling or Equivalent</option>
+            <option>Higher Education-bachelor’s degree</option>
+            <option>Higher Education-degree</option>
+            <option>Higher Education-master’s degree</option>
+            <option>Higher Education-doctorate</option>
+            <option>Frequency of Higher Education</option>
+            <option>12th Year of Schooling:-not completed</option>
+            <option>11th Year of Schooling:-not completed</option>
+            <option>7th Year (Old)</option>
+            <option>Other-11th Year of Schooling</option>
+            <option>2nd year complementary high school course</option>
+            <option>10th Year of Schooling</option>
+            <option>General commerce course</option>
+            <option>Basic Education 3rd Cycle (9th/10th/11th Year) or Equivalent</option>
+            <option>Complementary High School Course</option>
+            <option>Technical-professional course</option>
+            <option>Complementary High School Course:-not concluded</option>
+            <option>7th year of schooling</option>
+            <option>2nd cycle of the general high school course</option>
+            <option>9th Year of Schooling-not completed</option>
+            <option>8th year of schooling</option>
+            <option>General Course of Administration and Commerce</option>
+            <option>Supplementary Accounting and Administration</option>
+            <option>Unknown</option>
+            <option>Cannot read or write</option>
+            <option>Can read without having a 4th year of schooling</option>
+            <option>Basic education 1st cycle (4th/5th year) or equivalent</option>
+            <option>Basic Education 2nd Cycle (6th/7th/8th Year) or equivalent</option>
+            <option>Technological specialization course</option>
+            <option>Higher education-degree (1st cycle)</option>
+            <option>Specialized higher studies course</option>
+            <option>Professional higher technical course</option>
+            <option>Higher Education-master’s degree (2nd cycle)</option>
+            <option>Higher Education-doctorate (3rd cycle)</option>
+        </select><br><br>
+
+        <!-- Categorical Field: Mother Qualification -->
+        <label for="father_qualification">Father Qualification:</label>
+        <select id="father_qualification" name="father_qualification">
+            <option>Secondary Education-12th Year of Schooling or Equivalent</option>
+            <option>Higher Education-bachelor’s degree</option>
+            <option>Higher Education-degree</option>
+            <option>Higher Education-master’s degree</option>
+            <option>Higher Education-doctorate</option>
+            <option>Frequency of Higher Education</option>
+            <option>12th Year of Schooling:-not completed</option>
+            <option>11th Year of Schooling:-not completed</option>
+            <option>7th Year (Old)</option>
+            <option>Other-11th Year of Schooling</option>
+            <option>2nd year complementary high school course</option>
+            <option>10th Year of Schooling</option>
+            <option>General commerce course</option>
+            <option>Basic Education 3rd Cycle (9th/10th/11th Year) or Equivalent</option>
+            <option>Complementary High School Course</option>
+            <option>Technical-professional course</option>
+            <option>Complementary High School Course:-not concluded</option>
+            <option>7th year of schooling</option>
+            <option>2nd cycle of the general high school course</option>
+            <option>9th Year of Schooling-not completed</option>
+            <option>8th year of schooling</option>
+            <option>General Course of Administration and Commerce</option>
+            <option>Supplementary Accounting and Administration</option>
+            <option>Unknown</option>
+            <option>Cannot read or write</option>
+            <option>Can read without having a 4th year of schooling</option>
+            <option>Basic education 1st cycle (4th/5th year) or equivalent</option>
+            <option>Basic Education 2nd Cycle (6th/7th/8th Year) or equivalent</option>
+            <option>Technological specialization course</option>
+            <option>Higher education-degree (1st cycle)</option>
+            <option>Specialized higher studies course</option>
+            <option>Professional higher technical course</option>
+            <option>Higher Education-master’s degree (2nd cycle)</option>
+            <option>Higher Education-doctorate (3rd cycle)</option>
+        </select><br><br>
+
+        <!-- Categorical Field: Gender -->
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option>male</option>
+            <option>female</option>
+        </select><br><br>
+
+        <!-- Categorical Field: Daytime or Evening Attendance -->
+        <label for="daytime_or_evening_attendance">Daytime or Evening Attendance:</label>
+        <select id="daytime_or_evening_attendance" name="daytime_or_evening_attendance">
+            <option>daytime</option>
+            <option>evening</option>
+        </select><br><br>
+
+                <!-- Categorical Field: Mother Occupation -->
+        <label for="mother_occupation">Mother Occupation:</label>
+        <select id="mother_occupation" name="mother_occupation">
+            <option>Student</option>
+            <option>Representatives of the Legislative Power and Executive Bodies, Directors, Directors and Executive Managers</option>
+            <option>Specialists in Intellectual and Scientific Activities</option>
+            <option>Intermediate Level Technicians and Professions</option>
+            <option>Administrative staff</option>
+            <option>Personal Services, Security and Safety Workers, and Sellers</option>
+            <option>Farmers and Skilled Workers in Agriculture, Fisheries, and Forestry</option>
+            <option>Skilled Workers in Industry, Construction, and Craftsmen</option>
+            <option>Installation and Machine Operators and Assembly Workers</option>
+            <option>Unskilled Workers</option>
+            <option>Armed Forces Professions</option>
+            <option>Other Situation</option>
+            <option>(blank)</option>
+            <option>Armed Forces Officers</option>
+            <option>Armed Forces Sergeants</option>
+            <option>Other Armed Forces personnel</option>
+            <option>Directors of administrative and commercial services</option>
+            <option>Hotel, catering, trade, and other services directors</option>
+            <option>Specialists in the physical sciences, mathematics, engineering, and related techniques</option>
+            <option>Health professionals</option>
+            <option>Teachers</option>
+            <option>Specialists in finance, accounting, administrative organization, and public and commercial relations</option>
+            <option>Intermediate level science and engineering technicians and professions</option>
+            <option>Technicians and professionals of intermediate level of health</option>
+            <option>Intermediate level technicians from legal, social, sports, cultural, and similar services</option>
+            <option>Information and communication technology technicians</option>
+            <option>Office workers, secretaries in general, and data processing operators</option>
+            <option>Data, accounting, statistical, financial services, and registry-related operators</option>
+            <option>Other administrative support staff</option>
+            <option>Personal service workers</option>
+            <option>Sellers</option>
+            <option>Personal care workers and the like</option>
+            <option>Protection and security services personnel</option>
+            <option>Market-oriented farmers and skilled agricultural and animal production workers</option>
+            <option>Farmers, livestock keepers, fishermen, hunters and gatherers, and subsistence</option>
+            <option>Skilled construction workers and the like, except electricians</option>
+            <option>Skilled workers in metallurgy, metalworking, and similar</option>
+            <option>Skilled workers in electricity and electronics</option>
+            <option>Workers in food processing, woodworking, and clothing and other industries and crafts</option>
+            <option>Fixed plant and machine operators</option>
+            <option>Assembly workers</option>
+            <option>Vehicle drivers and mobile equipment operators</option>
+            <option>Unskilled workers in agriculture, animal production, and fisheries and forestry</option>
+            <option>Unskilled workers in extractive industry, construction, manufacturing, and transport</option>
+            <option>Meal preparation assistants</option>
+            <option>Street vendors (except food) and street service providers</option>
+        </select><br><br>
+
+
+        <!-- Categorical Field: Father Occupation -->
+        <label for="father_occupation">Father Occupation:</label>
+        <select id="father_occupation" name="father_occupation">
+            <option>Student</option>
+            <option>Representatives of the Legislative Power and Executive Bodies, Directors, Directors and Executive Managers</option>
+            <option>Specialists in Intellectual and Scientific Activities</option>
+            <option>Intermediate Level Technicians and Professions</option>
+            <option>Administrative staff</option>
+            <option>Personal Services, Security and Safety Workers, and Sellers</option>
+            <option>Farmers and Skilled Workers in Agriculture, Fisheries, and Forestry</option>
+            <option>Skilled Workers in Industry, Construction, and Craftsmen</option>
+            <option>Installation and Machine Operators and Assembly Workers</option>
+            <option>Unskilled Workers</option>
+            <option>Armed Forces Professions</option>
+            <option>Other Situation</option>
+            <option>(blank)</option>
+            <option>Armed Forces Officers</option>
+            <option>Armed Forces Sergeants</option>
+            <option>Other Armed Forces personnel</option>
+            <option>Directors of administrative and commercial services</option>
+            <option>Hotel, catering, trade, and other services directors</option>
+            <option>Specialists in the physical sciences, mathematics, engineering, and related techniques</option>
+            <option>Health professionals</option>
+            <option>Teachers</option>
+            <option>Specialists in finance, accounting, administrative organization, and public and commercial relations</option>
+            <option>Intermediate level science and engineering technicians and professions</option>
+            <option>Technicians and professionals of intermediate level of health</option>
+            <option>Intermediate level technicians from legal, social, sports, cultural, and similar services</option>
+            <option>Information and communication technology technicians</option>
+            <option>Office workers, secretaries in general, and data processing operators</option>
+            <option>Data, accounting, statistical, financial services, and registry-related operators</option>
+            <option>Other administrative support staff</option>
+            <option>Personal service workers</option>
+            <option>Sellers</option>
+            <option>Personal care workers and the like</option>
+            <option>Protection and security services personnel</option>
+            <option>Market-oriented farmers and skilled agricultural and animal production workers</option>
+            <option>Farmers, livestock keepers, fishermen, hunters and gatherers, and subsistence</option>
+            <option>Skilled construction workers and the like, except electricians</option>
+            <option>Skilled workers in metallurgy, metalworking, and similar</option>
+            <option>Skilled workers in electricity and electronics</option>
+            <option>Workers in food processing, woodworking, and clothing and other industries and crafts</option>
+            <option>Fixed plant and machine operators</option>
+            <option>Assembly workers</option>
+            <option>Vehicle drivers and mobile equipment operators</option>
+            <option>Unskilled workers in agriculture, animal production, and fisheries and forestry</option>
+            <option>Unskilled workers in extractive industry, construction, manufacturing, and transport</option>
+            <option>Meal preparation assistants</option>
+            <option>Street vendors (except food) and street service providers</option>
+        </select><br><br>
+
+
+
+
+        <!-- Add more dropdowns for categorical fields here -->
+
+        <!-- Binary Categorical Fields -->
+        <label for="displaced">Displaced:</label>
+        <select id="displaced" name="displaced">
+            <option>yes</option>
+            <option>no</option>
+        </select><br><br>
+
+        <label for="debtor">Debtor:</label>
+        <select id="debtor" name="debtor">
+            <option>yes</option>
+            <option>no</option>
+        </select><br><br>
+
+        <!-- Binary Categorical Field: Tuition Fees Up to Date -->
+        <label for="tuition_fees_up_to_date">Tuition Fees Up to Date:</label>
+        <select id="tuition_fees_up_to_date" name="tuition_fees_up_to_date">
+            <option>yes</option>
+            <option>no</option>
+        </select><br><br>
+
+        <!-- Binary Categorical Field: Scholarship Holder -->
+        <label for="scholarship_holder">Scholarship Holder:</label>
+        <select id="scholarship_holder" name="scholarship_holder">
+            <option>yes</option>
+            <option>no</option>
+        </select><br><br>
+
+        <!-- Numerical Field: Application Order (int) -->
+
+        <!-- Numerical Field: Curricular Units 1st Semester (Credited) -->
+        <label for="curricular_units_1st_sem_credited">Curricular Units 1st Semester (Credited) (int):</label>
+        <input type="number" id="curricular_units_1st_sem_credited" name="curricular_units_1st_sem_(credited)"><br><br>
+
+        <!-- Numerical Field: Curricular Units 1st Semester (Enrolled) -->
+        <label for="curricular_units_1st_sem_enrolled">Curricular Units 1st Semester (Enrolled) (int):</label>
+        <input type="number" id="curricular_units_1st_sem_enrolled" name="curricular_units_1st_sem_(enrolled)"><br><br>
+
+        <!-- Numerical Field: Curricular Units 1st Semester (Evaluations) -->
+        <label for="curricular_units_1st_sem_evaluations">Curricular Units 1st Semester (Evaluations) (int):</label>
+        <input type="number" id="curricular_units_1st_sem_evaluations" name="curricular_units_1st_sem_(evaluations)"><br><br>
+
+        <!-- Numerical Field: Curricular Units 1st Semester (Approved) -->
+        <label for="curricular_units_1st_sem_approved">Curricular Units 1st Semester (Approved) (int):</label>
+        <input type="number" id="curricular_units_1st_sem_approved" name="curricular_units_1st_sem_(approved)"><br><br>
+
+        <!-- Numerical Field: Curricular Units 1st Semester (Grade) -->
+        <label for="curricular_units_1st_sem_grade">Curricular Units 1st Semester (Grade) (float):</label>
+        <input type="number" id="curricular_units_1st_sem_grade" name="curricular_units_1st_sem_(grade)" step="0.001"><br><br>
+
+        <!-- Numerical Field: Curricular Units 1st Semester (Without Evaluations) -->
+        <label for="curricular_units_1st_sem_without_evaluations">Curricular Units 1st Semester (Without Evaluations) (int):</label>
+        <input type="number" id="curricular_units_1st_sem_without_evaluations" name="curricular_units_1st_sem_(without_evaluations)"><br><br>
+
+        <!-- Numerical Field: Curricular Units 2nd Semester (Credited) -->
+        <label for="curricular_units_2nd_sem_credited">Curricular Units 2nd Semester (Credited) (int):</label>
+        <input type="number" id="curricular_units_2nd_sem_credited" name="curricular_units_2nd_sem_(credited)"><br><br>
+
+        <!-- Numerical Field: Curricular Units 2nd Semester (Enrolled) -->
+        <label for="curricular_units_2nd_sem_enrolled">Curricular Units 2nd Semester (Enrolled) (int):</label>
+        <input type="number" id="curricular_units_2nd_sem_enrolled" name="curricular_units_2nd_sem_(enrolled)"><br><br>
+
+        <!-- Numerical Field: Curricular Units 2nd Semester (Evaluations) -->
+        <label for="curricular_units_2nd_sem_evaluations">Curricular Units 2nd Semester (Evaluations) (int):</label>
+        <input type="number" id="curricular_units_2nd_sem_evaluations" name="curricular_units_2nd_sem_(evaluations)"><br><br>
+
+        <!-- Numerical Field: Curricular Units 2nd Semester (Approved) -->
+        <label for="curricular_units_2nd_sem_approved">Curricular Units 2nd Semester (Approved) (int):</label>
+        <input type="number" id="curricular_units_2nd_sem_approved" name="curricular_units_2nd_sem_(approved)"><br><br>
+
+        <!-- Numerical Field: Curricular Units 2nd Semester (Grade) -->
+        <label for="curricular_units_2nd_sem_grade">Curricular Units 2nd Semester (Grade) (float):</label>
+        <input type="number" id="curricular_units_2nd_sem_grade" name="curricular_units_2nd_sem_(grade)" step="0.001"><br><br>
+
+        <!-- Numerical Field: Curricular Units 2nd Semester (Without Evaluations) -->
+        <label for="curricular_units_2nd_sem_without_evaluations">Curricular Units 2nd Semester (Without Evaluations) (int):</label>
+        <input type="number" id="curricular_units_2nd_sem_without_evaluations" name="curricular_units_2nd_sem_(without_evaluations)"><br><br>
+
+        <!-- Numerical Fields (float) -->
+        <label for="inflation_rate">Inflation Rate (float):</label>
+        <input type="number" step="0.001" id="inflation_rate" name="inflation_rate"><br><br>
+
+        <label for="gdp">GDP (float):</label>
+        <input type="number" step="0.001" id="gdp" name="gdp"><br><br>
+
+        <!-- Add more float numerical fields here -->
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById("prediction_form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+
+            fetch("/predict_form", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("prediction_result").textContent = data;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        });
+    </script>
+
+</body>
+</html>
