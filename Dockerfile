@@ -10,7 +10,9 @@ COPY ["Pipfile", "Pipfile.lock", "./"]
 RUN pipenv install --deploy --system && \
     rm -rf /root/.cache
 
-COPY ["predict.py", "model/model.bin", "templates/main.html", "./"]
+COPY ["predict.py", "./"]
+COPY ["model/model.bin", "./model/"]
+COPY ["templates/main.html", "./templates/"]
 
 EXPOSE 9696
 
