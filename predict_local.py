@@ -1,3 +1,8 @@
+"""
+Test prediction with model read from local file
+
+"""
+
 import pandas as pd
 import numpy as np
 

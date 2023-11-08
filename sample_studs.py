@@ -1,3 +1,6 @@
+"""
+Random students dicts with real target value takes from test part of dataset split
+"""
 stud1 = {"marital_status": "Single",
          "application_mode": "Over 23 years old",
          "application_order": 1,

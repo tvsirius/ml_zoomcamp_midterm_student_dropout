@@ -1,3 +1,12 @@
+"""
+Flask server for prediction serving of the model
+
+Have endpoints:
+/predict - for API predictions in JSON
+/ - return main.html (HTML with form and script)
+/predict_form - POST request predict processing with returing str with prediction to the script in HTML
+
+"""
 import pandas as pd
 import numpy as np
 
@@ -13,11 +22,7 @@ DROPOUT_THRESHOLD = 0.5
 model_bin = 'model/model.bin'
 
 
-def predict_single(student, dv, model):
-    X = dv.transform([student])
-    y_pred = model.predict_proba(X)[:, 1]
-    return y_pred[0]
-
+# LOADING MODEL
 
 print(f'Reading from {model_bin} file')
 
@@ -26,6 +31,24 @@ with open(model_bin, 'rb') as f_in:
 
 print((dv, model))
 print('Reading done...')
+
+
+
+
+def predict_single(student, dv, model):
+    """
+    Helper function for making predictions
+
+    :param student: dict with all student data (must contain features)
+    :param dv: DictVectorizer
+    :param model: RandomForestClassifier
+    :return: prediction of dropout using given params
+    """
+    X = dv.transform([student])
+    y_pred = model.predict_proba(X)[:, 1]
+    return y_pred[0]
+
+
 
 app = Flask('dropout')
 
@@ -40,6 +63,8 @@ def predict():
     """
     student = request.get_json()
 
+
+    # PREDICTION
     prediction = predict_single(student, dv, model)
     dropout = prediction >= DROPOUT_THRESHOLD
 
@@ -58,7 +83,7 @@ def predict():
 @app.route('/', methods=['GET'])
 def main_get():
     """
-    Flask routine for entering via browser, to get base page with form
+    Flask routine for entering via browser, to get base page with form and script
 
     :return: main.html
     """
@@ -72,7 +97,10 @@ def predict_form():
 
     :return: str with model predition to display in browser
     """
+
     student = {}
+
+    # filling the student dict with features from request
 
     categorical_features = [
         'marital_status', 'application_mode', 'course',
@@ -83,6 +111,7 @@ def predict_form():
     ]
     for feature in categorical_features:
         student[feature] = request.form.get(feature)
+        # Check so feature MUST BE in request
         if student[feature] is None:
             raise KeyError(f'{feature} not in request!!!')
 
@@ -109,8 +138,12 @@ def predict_form():
 
     for feature in numerical_features:
         student[feature] = request.form.get(feature)
+        # Check so feature MUST BE in request
+
         if student[feature] is None:
             raise KeyError(f'{feature} not in request!!!')
+
+        # int and float will be str in request, so i need to convert, and assing 0 if they are blank
 
         try:
             if feature in numerical_features_float:
@@ -120,6 +153,8 @@ def predict_form():
         except:
             student[feature] = 0
 
+
+    # PREDICTION
     prediction = predict_single(student, dv, model)
     dropout = prediction >= DROPOUT_THRESHOLD
 

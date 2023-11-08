@@ -1,5 +1,8 @@
 """
 In this file there is a script for training the final RandomForest model and exporting it
+
+For more detail look to notebook.ipynb
+
 """
 import pandas as pd
 import numpy as np
@@ -14,9 +17,11 @@ from sklearn.metrics import roc_auc_score
 import pickle
 
 SEED=42
+
 dataset='dataset/dataset.csv'
 model_bin='model/model.bin'
 
+# INITIAL READING AND PREPARATION
 
 data=pd.read_csv(dataset)
 
@@ -37,7 +42,9 @@ data.rename(columns={'daytime/evening_attendance':'daytime_or_evening_attendance
        "mother's_occupation":"mother_occupation", "father's_occupation":"father_occupation"}, inplace=True )
 
 
-#%%
+# CATEGORICAL FILL IN
+
+
 marital_status_values={
 1:'Single',
 2:'Married',
@@ -264,7 +271,7 @@ data_all=data.drop(columns=['nationality','international','educational_special_n
                    inplace=False)
 
 
-
+# SPLIT THE DATASET
 
 
 df_train_full, df_test = train_test_split(data_all, test_size=0.2, random_state=SEED)
@@ -290,6 +297,10 @@ dv = DictVectorizer(sparse=True)
 X_train_full = dv.fit_transform(dict_train_full)
 X_test = dv.transform(dict_test)
 
+
+# MODEL TRAINING
+
+
 n_estimators=180
 max_depth=15
 min_samples_leaf=3
@@ -300,10 +311,15 @@ model = RandomForestClassifier(n_estimators=n_estimators, max_depth=max_depth, m
 model.fit(X_train_full, y_train_full)
 
 
+# METRICS
+
 y_pred_rf = model.predict_proba(X_test)[:, 1]
 
 
 print(f'Random Forest model trained, accuracy={accuracy_score(y_test, y_pred_rf>=0.5)}, auc={roc_auc_score(y_test, y_pred_rf)}')
+
+# SAVING TO .bin
+
 
 print(f'Writing to {model_bin} file')
 
